@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:ng1="http://www.sx3.com/CREATE_WORKS_ORDERS" xmlns:ng3="http://www.sx3.com/CreateWorksOrdersResponse" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl1="http://www.sx3.com/create_works_orders.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CreateWorksOrders" targetNamespace="http://www.sx3.com/create_works_orders.wsdl">
+	<wsdl:types>
+		<!-- SX3_XML_DOCUMENT schema -->
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ng1="http://www.sx3.com/CREATE_WORKS_ORDERS" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+			<xs:import namespace="http://www.sx3.com/CREATE_WORKS_ORDERS"/>
+			<xs:element name="SX3_XML_DOCUMENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SX3_HEADER" minOccurs="1" maxOccurs="1">
+							<xs:complexType>
+								<xs:all>
+									<xs:element name="API" type="xs:string" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="REQUESTOR" type="xs:string" minOccurs="0" maxOccurs="1"/>
+									<xs:element name="REQUEST_USER" type="xs:string" minOccurs="0" maxOccurs="1"/>
+									<xs:element name="REQUEST_PASSWORD" type="xs:string" minOccurs="0" maxOccurs="1"/>
+								</xs:all>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="SX3_BODY" minOccurs="1" maxOccurs="1">
+							<xs:complexType>
+								<xs:all>
+									<xs:element ref="ng1:CreateWorksOrders" minOccurs="1" maxOccurs="1"/>
+								</xs:all>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+		<!-- REQUEST schema-->
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ng1="http://www.sx3.com/CREATE_WORKS_ORDERS" targetNamespace="http://www.sx3.com/CREATE_WORKS_ORDERS" elementFormDefault="qualified" attributeFormDefault="qualified">
+			<xs:element name="CreateWorksOrders">
+				<xs:annotation>
+					<xs:documentation>Create a Works Order API</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="WOR" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Works Orders Details</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:annotation>
+									<xs:documentation>Works Order Details</xs:documentation>
+								</xs:annotation>
+								<xs:sequence>
+									<xs:element name="SrqNo" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The unique reference number for the service request</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ExternalReference" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The unique reference number from the external system</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AdminUnitCode" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Admin unit the works order is for</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="PropertyRefno" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The internal Housing  property reference</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="PropertyReference" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The property reference</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="25"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="nlpgUprn" type="xs:int" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>National Land and Property Gazetteer Unique Property Reference Number</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="WorkProgramme" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The work programme for the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="8"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ContractorSite" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The contractor site allocated to the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="15"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="RaisedDateTime" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The date and time the works  order was raised in format YYYY-MM-DDThh:mm:ss</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:union>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="0"/>
+													</xs:restriction>
+												</xs:simpleType>
+												<xs:simpleType>
+													<xs:restriction base="xs:dateTime"/>
+												</xs:simpleType>
+											</xs:union>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="CausedBy" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The cause giving rise to the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="PriorityCode" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The priority of the works order.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="TargetDatetime" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The target date for completion of the works order in format YYYY-MM-DDThh:mm:ss.  If not included then will be calculated from the priority code</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:union>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="0"/>
+													</xs:restriction>
+												</xs:simpleType>
+												<xs:simpleType>
+													<xs:restriction base="xs:dateTime"/>
+												</xs:simpleType>
+											</xs:union>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="LocationCode" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Code for the main location of the work to be carried out</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="LocationNotes" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Descriptive  notes related to the location code</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AccessCode" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The code for access details to the property for this works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AccessNotes" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Descriptive notes related to the access code</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AccessAm" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates morning access availability for the selected address on each day of the week</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="7"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AccessPm" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates afternoon access availability for the selected address on each day of the week</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="7"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="PrinterName" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The printer this works order version is to be printed on</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="80"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="UserStatus" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>A user defined status for  the works order version</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="10"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="WoDescription" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>A description of the work to be carried out</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="240"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="WoComments" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Additional free format notes about the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="2000"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="RechargePaymentType" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The Rechargeable Repairs type code</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:annotation>
+												<xs:documentation>Character with an option of PRE or POS </xs:documentation>
+											</xs:annotation>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="PRE"/>
+												<xs:enumeration value="POS"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="LegacyReference" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>User defined works order id, used to hold legacy number </xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AlternativeReference" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>User defined works order id, used to hold alternative number e.g. reference for the equivalent works order information on third party repairs contractor system.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ConfirmationInd" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates whether this is a confirmation works order.</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Y"/>
+												<xs:enumeration value="N"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="CreatedBy" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates the user who created this works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="30"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ReportMethod" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates the method of contact by which the service request was reported </xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ReportedBy" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates the user who reported the service request</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="80"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="HomeTel" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The home telephone number of the person raising the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ContactTel" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>The contact telephone number of the person raising the works order</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ReportedDate" minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Indicates when the works order was created</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:union>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:length value="0"/>
+													</xs:restriction>
+												</xs:simpleType>
+												<xs:simpleType>
+													<xs:restriction base="xs:dateTime"/>
+												</xs:simpleType>
+											</xs:union>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="Jobs" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Jobs for Works Order</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Job" minOccurs="0" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation>Job Details</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="JobSorCode" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The schedule of rates code for this job</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobPriorityCode" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The priority of the job. </xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="3"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobQuantity" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The number of units of the schedule of rates item required</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:decimal">
+																		<xs:totalDigits value="6"/>
+																		<xs:fractionDigits value="2"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobOrderSequence" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The sequence defining the order in which jobs will be printed on the works order ticket</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="JobTargetDateTime" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Target date for completion of this job in format YYYY-MM-DDThh:mm:ss. If not included then will be calculated from the priority code</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:union>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:length value="0"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:dateTime"/>
+																		</xs:simpleType>
+																	</xs:union>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobLocationCode" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The code for the location of the work required for this job</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobLocationNotes" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Descriptive notes related to the location code of the job - defaulted notes may be updated if required</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="40"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobRechargeLiabilityInd" minOccurs="1" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Sor Liability Type Ind</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:annotation>
+																		<xs:documentation>Character with an option of Organisation, Full or Split</xs:documentation>
+																	</xs:annotation>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="O"/>
+																		<xs:enumeration value="S"/>
+																		<xs:enumeration value="F"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobBudgetReference" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The Housing budget the cost of this job is to be charged to</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="JobDefectCode" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The defect that the schedule of rates for this job is a part of</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="8"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobUnitOfMeasure" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The unit of measure applicable the work required for this job (applies to manual jobs only)</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobTradeCode" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The main trade of this job (applies to manual jobs only)</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobLiabilityCode" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The party the cost of this job is partly or wholly rechargeable to</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobClass" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Code for the classification of the job</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="10"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobDescription" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation> Free format description of the work required for the job (applies to manual jobs only)</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="2000"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobEstimatedCost" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The total estimated cost of the job (applies to manual jobs only)</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:decimal">
+																		<xs:totalDigits value="5"/>
+																		<xs:fractionDigits value="2"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobTaxCode" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>The tax code applicable to this job</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="8"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="JobComments" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Additional free format comments relating to the job</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="240"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="Recharges" minOccurs="0" maxOccurs="1">
+																<xs:annotation>
+																	<xs:documentation>Recharges for the Job</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="RechargeItem" minOccurs="0" maxOccurs="unbounded">
+																			<xs:annotation>
+																				<xs:documentation>Recharges Details</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="RechTypeCode" minOccurs="1" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>The Recharge Payment Type</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="5"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechSequence" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Sequence of the Recharge Payment</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="5"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechPercentageLiability" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>The percentage of the cost of the JOB being recharged to a party</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:decimal">
+																								<xs:totalDigits value="5"/>
+																								<xs:fractionDigits value="2"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechNetAmount" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>The portion of the net amount of the JOB being recharged</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:decimal">
+																								<xs:totalDigits value="8"/>
+																								<xs:fractionDigits value="2"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechRentAccount" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>System generated account number to uniquely identify this account in Housing</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="RechPaymentReference" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Reference against which all payments and rebates will be made. May  default to revenue account number</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="25"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="AlternativeReference" type="xs:positiveInteger" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>The Tenanacy, Person or Interested Party Reference depending on the Recharge Type, for creating a Sundry Account</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="RechReason" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Recharge Reason Code</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="10"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechStandardCostCode" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Recharge Standard Code</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="10"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechUniqueValueCode" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Recharge Unique value code</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="10"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="RechComments" minOccurs="0" maxOccurs="1">
+																						<xs:annotation>
+																							<xs:documentation>Recharge Comments</xs:documentation>
+																						</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="2000"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+		<!-- RESPONSE schema-->
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+			<xs:element name="CREATE_WORKS_ORDERS">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="WOR" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Works Order Details</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="WorDetails" minOccurs="0" maxOccurs="1">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="WorSrqNo" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+												<xs:element name="WorSeqno" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+												<xs:element name="ExternalReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MESSAGE_RETURN_INFO" minOccurs="1" maxOccurs="1">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SUCCESS_FLAG" type="xs:string" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="MESSAGES_EXIST" type="xs:string" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="RETURNED_MESSAGES" minOccurs="1" maxOccurs="1">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="MESSAGE" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:all>
+															<xs:element name="TEXT" type="xs:string" minOccurs="0" maxOccurs="1"/>
+														</xs:all>
+														<xs:attribute name="TYPE" type="xs:string" use="required"/>
+														<xs:attribute name="AREA" type="xs:string" use="required"/>
+														<xs:attribute name="REFNO" type="xs:string" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="DoCreateWorksOrdersRequest">
+		<wsdl:part name="parameters" element="SX3_XML_DOCUMENT"/>
+	</wsdl:message>
+	<wsdl:message name="DoCreateWorksOrdersResponse">
+		<wsdl:part name="parameters" element="CREATE_WORKS_ORDERS"/>
+	</wsdl:message>
+	<wsdl:portType name="CreateWorksOrdersPort">
+		<wsdl:operation name="CreateWorksOrders">
+			<wsdl:input message="wsdl1:DoCreateWorksOrdersRequest"/>
+			<wsdl:output message="wsdl1:DoCreateWorksOrdersResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CreateWorksOrdersBinding" type="wsdl1:CreateWorksOrdersPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="CreateWorksOrders">
+			<soap:operation soapAction="https://url.com/communication/gateway"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CreateWorksOrdersService">
+		<wsdl:documentation>WSDL defining how to call the operation which checks that Sx3 Integrator is installed correclty and can see the database</wsdl:documentation>
+		<wsdl:port name="CreateWorksOrdersPort" binding="wsdl1:CreateWorksOrdersBinding">
+			<soap:address location="https://url.com/communication/CreateWorksOrders"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
